@@ -1,4 +1,5 @@
 // https://forkify-api.herokuapp.com/v2
+import "../sass/main.scss";
 import * as model from "./model.js";
 import { MODAL_CLOSE_SEC } from "./config.js";
 import recipeView from "./views/recipeView.js";
