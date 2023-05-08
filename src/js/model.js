@@ -1,7 +1,10 @@
 import { API_URL, RES_PER_PAGE, KEY } from "./config.js";
 // import { getJSON, sendJSON } from "./helper.js";
 import { AJAX } from "./helper.js";
+import logo from "../img/logo.png";
 
+const siteLogo = document.querySelector(".header__logo");
+siteLogo.src = logo;
 export const state = {
   recipe: {},
   search: {

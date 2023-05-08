@@ -67,7 +67,7 @@ export default class View {
     const markup = `
       <div class="spinner">
         <svg>
-          <use href="${icons}.svg#icon-loader"></use>
+          <use href="${icons}#icon-loader"></use>
         </svg>
       </div>
     `;

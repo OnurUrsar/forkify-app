@@ -4,12 +4,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    bundle: path.resolve(__dirname, "src/js/controller.js"),
+    bundle: path.resolve(__dirname, "./src/js/controller.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
+    clean: true,
+    assetModuleFilename: "assets/[name][ext][query]",
   },
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),
@@ -23,17 +26,22 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+      {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.svg$/,
-        use: {
-          loader: "svg-url-loader",
-          options: {
-            iesafe: true,
-          },
-        },
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
@@ -41,7 +49,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "forkify // Search over 1,000,000 recipes",
       filename: "index.html",
-      template: "src/template.html",
+      template: "./src/template.html",
     }),
   ],
 };
