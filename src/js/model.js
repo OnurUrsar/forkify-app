@@ -5,6 +5,7 @@ import logo from "../img/logo.png";
 
 const siteLogo = document.querySelector(".header__logo");
 siteLogo.src = logo;
+
 export const state = {
   recipe: {},
   search: {
@@ -113,7 +114,7 @@ export function deleteBookmark(id) {
   state.bookmarks.splice(index, 1);
 
   // Mark the current recipe as unbookmarked
-  if (id.id === state.recipe.id) {
+  if (id === state.recipe.id) {
     state.recipe.bookmarked = false;
   }
 
